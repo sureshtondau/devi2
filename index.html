@@ -31,6 +31,7 @@
         <a href="#celebrate">The festival</a>
         <a href="#nine-nights">Nine nights</a>
         <a href="#schedule">Schedule</a>
+        <a href="#gallery">Photos</a>
         <a href="#join">Get involved</a>
         <a class="nav__cta" href="#register">Register <span aria-hidden="true">↗</span></a>
       </nav>
@@ -130,6 +131,28 @@
           <a class="schedule-card__link" href="#join" aria-label="Get updates about the celebration">→</a>
         </div>
         <p class="schedule__note"><span aria-hidden="true">✳</span> Event timings, venue details, and daily activities will be confirmed by the organisers.</p>
+      </section>
+
+      <section class="gallery section" id="gallery">
+        <div class="section__topline"><span class="eyebrow">MOMENTS WE CELEBRATE TOGETHER</span><span class="section__number">04 / 04</span></div>
+        <div class="gallery__heading">
+          <div><h2>Festival memories,<br><em>year by year.</em></h2></div>
+          <p>Revisit special moments from our community celebrations. Choose a year to explore its photo album.</p>
+        </div>
+        <div class="gallery__years" role="tablist" aria-label="Choose a photo album year">
+          <button class="gallery__year" type="button" id="gallery-tab-2026" role="tab" aria-selected="true" aria-controls="gallery-panel" data-gallery-year="2026">2026</button>
+          <button class="gallery__year" type="button" id="gallery-tab-2025" role="tab" aria-selected="false" aria-controls="gallery-panel" data-gallery-year="2025" tabindex="-1">2025</button>
+          <button class="gallery__year" type="button" id="gallery-tab-2024" role="tab" aria-selected="false" aria-controls="gallery-panel" data-gallery-year="2024" tabindex="-1">2024</button>
+        </div>
+        <div class="gallery__panel" id="gallery-panel" role="tabpanel" aria-labelledby="gallery-tab-2026" tabindex="0">
+          <div class="gallery__empty">
+            <span class="gallery__empty-icon" aria-hidden="true">✳</span>
+            <h3 id="gallery-empty-title">The 2026 album is waiting for its first memories.</h3>
+            <p id="gallery-empty-copy">Photos from this year's celebration will appear here after the festival.</p>
+          </div>
+          <div class="gallery__grid" id="gallery-grid" aria-live="polite"></div>
+        </div>
+        <p class="gallery__note">Photos are shared by the community. Please get permission before adding or sharing someone else's pictures.</p>
       </section>
 
       <section class="join-section" id="join">

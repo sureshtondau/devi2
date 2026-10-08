@@ -16,6 +16,72 @@ navigation.addEventListener("click", (event) => {
   }
 });
 
+const galleryAlbums = {
+  "2026": [],
+  "2025": [],
+  "2024": [],
+};
+
+const galleryTabs = document.querySelectorAll("[data-gallery-year]");
+const galleryPanel = document.querySelector("#gallery-panel");
+const galleryGrid = document.querySelector("#gallery-grid");
+const galleryEmpty = document.querySelector(".gallery__empty");
+const galleryEmptyTitle = document.querySelector("#gallery-empty-title");
+const galleryEmptyCopy = document.querySelector("#gallery-empty-copy");
+
+function showGalleryYear(year) {
+  const photos = galleryAlbums[year];
+  galleryPanel.setAttribute("aria-labelledby", `gallery-tab-${year}`);
+  galleryEmpty.hidden = photos.length > 0;
+  galleryGrid.replaceChildren();
+
+  if (photos.length === 0) {
+    galleryEmptyTitle.textContent = `The ${year} album is waiting for its first memories.`;
+    galleryEmptyCopy.textContent = year === "2026"
+      ? "Photos from this year's celebration will appear here after the festival."
+      : `No ${year} photos have been added to the community album yet.`;
+    return;
+  }
+
+  for (const photo of photos) {
+    const figure = document.createElement("figure");
+    figure.className = "gallery-photo";
+
+    const image = document.createElement("img");
+    image.src = `images/${year}/${photo.file}`;
+    image.alt = photo.alt;
+    image.loading = "lazy";
+
+    const caption = document.createElement("figcaption");
+    caption.textContent = photo.caption;
+
+    figure.append(image, caption);
+    galleryGrid.append(figure);
+  }
+}
+
+for (const tab of galleryTabs) {
+  tab.addEventListener("click", () => {
+    for (const otherTab of galleryTabs) {
+      const isSelected = otherTab === tab;
+      otherTab.setAttribute("aria-selected", String(isSelected));
+      otherTab.tabIndex = isSelected ? 0 : -1;
+    }
+    showGalleryYear(tab.dataset.galleryYear);
+  });
+
+  tab.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    const tabs = [...galleryTabs];
+    const currentIndex = tabs.indexOf(tab);
+    const offset = event.key === "ArrowRight" ? 1 : -1;
+    const nextTab = tabs[(currentIndex + offset + tabs.length) % tabs.length];
+    nextTab.focus();
+    nextTab.click();
+  });
+}
+
 const countdownTarget = new Date("2026-10-11T00:00:00+05:30").getTime();
 const countdownMessage = document.querySelector("#countdown-message");
 const countdown = document.querySelector("#countdown");

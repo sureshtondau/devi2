@@ -157,6 +157,27 @@ h1, h2, h3, p { margin-top: 0; }
 .schedule__note, .register__note { margin: 16px 0 0; color: #91868d; font-size: 9px; }
 .schedule__note span { margin-right: 6px; color: #b98455; }
 
+.gallery { background: #f8f4ed; }
+.gallery__heading { margin: 33px 0 25px; display: grid; grid-template-columns: 1fr .65fr; align-items: end; gap: 10%; }
+.gallery__heading h2 em { color: var(--rose); }
+.gallery__heading > p { max-width: 340px; margin: 0 0 4px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+.gallery__years { display: flex; gap: 8px; margin-bottom: 17px; }
+.gallery__year { min-width: 67px; padding: 10px 15px; border: 1px solid #e5d9cb; color: #746875; background: transparent; font: inherit; font-size: 10px; font-weight: 700; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+.gallery__year:hover { border-color: #a55b5e; color: var(--rose); }
+.gallery__year[aria-selected="true"] { border-color: var(--plum); color: white; background: var(--plum); }
+.gallery__year:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+.gallery__panel { min-height: 220px; padding: 28px; border: 1px solid var(--line); background: var(--paper); }
+.gallery__empty { min-height: 160px; display: grid; align-content: center; justify-items: center; text-align: center; }
+.gallery__empty[hidden] { display: none; }
+.gallery__empty-icon { color: #b98455; font-size: 23px; }
+.gallery__empty h3 { margin: 12px 0 7px; font-family: var(--serif); font-size: 18px; font-weight: 500; }
+.gallery__empty p { max-width: 390px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.8; }
+.gallery__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.gallery-photo { min-width: 0; margin: 0; }
+.gallery-photo img { width: 100%; aspect-ratio: 4 / 3; display: block; object-fit: cover; background: #f1e9df; }
+.gallery-photo figcaption { padding-top: 9px; color: #625663; font-family: var(--serif); font-size: 13px; }
+.gallery__note { margin: 13px 0 0; color: #91868d; font-size: 9px; line-height: 1.7; }
+
 .join-section { min-height: 340px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 61px 10%; color: #fff9f0; background: linear-gradient(105deg, #743c49, #854951 63%, #6d3a49); }
 .join-section__content { max-width: 560px; position: relative; z-index: 1; }
 .join-section h2 { margin: 19px 0 13px; font-family: var(--serif); font-size: clamp(39px, 4.4vw, 55px); font-weight: 500; line-height: 1.12; letter-spacing: -.035em; }
@@ -265,6 +286,12 @@ h1, h2, h3, p { margin-top: 0; }
   .goddess-card:nth-last-child(-n+2) { border-bottom: 1px solid #ffffff22; }
   .goddess-card:last-child { grid-column: 1/-1; }
   .schedule__heading, .register__heading { margin: 26px 0 26px; grid-template-columns: 1fr; gap: 16px; }
+  .gallery__heading { margin: 26px 0 22px; grid-template-columns: 1fr; gap: 14px; }
+  .gallery__years { gap: 6px; }
+  .gallery__year { min-width: 59px; padding: 9px 12px; }
+  .gallery__panel { min-height: 210px; padding: 16px; }
+  .gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .gallery-photo figcaption { font-size: 12px; }
   .schedule-card { padding: 18px 15px; grid-template-columns: 75px 1fr 28px; gap: 12px; }
   .schedule-card__date { width: 74px; height: 86px; }
   .schedule-card__date strong { gap: 4px; font-size: 22px; }

@@ -20,6 +20,22 @@ No Actions workflow or build output folder is needed.
 
 The pooja, prasadam sponsor, and general sponsor links open the Google Forms provided by the organisers. Responses are stored by Google Forms, not by this static website. Verify the forms, access settings, and response spreadsheets before sharing the site.
 
+## Year-wise photo gallery
+
+Photos are stored in `images/<year>/`, for example `images/2026/` or `images/2025/`. Add image files to the matching year folder, then add each image to `galleryAlbums` in `script.js`:
+
+```js
+"2026": [
+  {
+    file: "opening-ceremony.jpg",
+    alt: "The community gathered for the opening ceremony",
+    caption: "Opening ceremony",
+  },
+],
+```
+
+The `file` value must match the image's filename exactly. Add a year folder and a matching year button in `index.html` to start an album for another year. The site displays images already included with the website; it does not upload files or provide permanent visitor uploads.
+
 ## Before sharing
 
 - Confirm the festival dates, programme, daily timings, and venue with the organisers.
