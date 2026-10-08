@@ -1,0 +1,144 @@
+# Sri Devi Navarathri 2026
+
+A mobile-friendly festival website for Aparna Zenon Community, Hyderabad. It is built with React, TypeScript, Vite, and Tailwind CSS, and is deployed as a static site using GitHub Pages.
+
+## Before you start
+
+Install:
+
+- [Git](https://git-scm.com/downloads)
+- [Node.js 20.19 or later in the 20.x line, or 22.12 or later](https://nodejs.org/)
+
+The Node.js version requirement is needed by Vite 8. npm is included with Node.js. Check your installations in PowerShell:
+
+```powershell
+git --version
+node --version
+npm --version
+```
+
+## Run the site locally
+
+Open PowerShell in the project folder, then install dependencies and start Vite:
+
+```powershell
+npm install
+npm run dev
+```
+
+Open the local URL printed by Vite, usually `http://localhost:5173/`. Keep the terminal open while using the development server; press `Ctrl+C` to stop it.
+
+To check a production build locally:
+
+```powershell
+npm run build
+npm run preview
+```
+
+The build output is written to `dist/`. The preview command prints a local URL where you can check the built site.
+
+Optional lint check:
+
+```powershell
+npm run lint
+```
+
+## Publish to GitHub Pages
+
+The repository includes a GitHub Actions workflow at `.github/workflows/deploy.yml`. It builds the site and deploys the `dist/` folder whenever you push to `main`.
+
+### 1. Create a GitHub repository
+
+On GitHub, create a new repository. Do not initialize it with a README, `.gitignore`, or license if you plan to push this existing project as-is.
+
+Copy the repository's HTTPS URL. It will look like:
+
+```text
+https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+```
+
+### 2. Push this project to GitHub
+
+In PowerShell, change to the project directory. Replace the URL below with your repository URL:
+
+```powershell
+cd "C:\path\to\devi"
+git init
+git add .
+git commit -m "Initial website"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git push -u origin main
+```
+
+If this project is already a Git repository with a remote, do not run `git init` or add another `origin`. Check the current remote with:
+
+```powershell
+git remote -v
+```
+
+Then commit and push your changes to the `main` branch:
+
+```powershell
+git add .
+git commit -m "Update festival website"
+git push origin main
+```
+
+### 3. Enable GitHub Pages
+
+In your GitHub repository:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Open the **Actions** tab and wait for the **Deploy to GitHub Pages** workflow to finish successfully. You can also start it manually from **Actions → Deploy to GitHub Pages → Run workflow**.
+4. Return to **Settings → Pages** to find the published site URL.
+
+For a project repository, the URL is generally:
+
+```text
+https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
+```
+
+The workflow deploys automatically after each push to `main`.
+
+## Registration forms and spreadsheet responses
+
+The website is static; it does not have its own database or server. Registration is handled by Google Forms, and each form's responses must be connected to a Google Sheet from that form's **Responses → Link to Sheets** option.
+
+Current forms:
+
+| Registration type | Form |
+| --- | --- |
+| Pooja | [Registration for Puja - 2026](https://docs.google.com/forms/d/1hjG7SERfYpe-bsAd390Tc81OUy17O3Ah5KqxGmOCg6E/viewform) |
+| Prasadam sponsor | [Prasadam Sponsors Nomination form](https://docs.google.com/forms/d/e/1FAIpQLSeRYqpSstS7Js69CN_rbDZqRFLYZO6PZVtxPG_4Ho-kfdtE5A/viewform) |
+| General sponsor | [Navaratri & Bathukamma Sponsorship](https://docs.google.com/forms/d/e/1FAIpQLSdTAppORs845iia1Zm_k-qxLzdbHyL5G6yW_ZbtpIroyF-NFg/viewform) |
+
+Verify that you own or can manage each form, that its questions and access settings are correct, and that its response destination is the intended community spreadsheet. Google Forms creates or uses a response tab in the selected spreadsheet; it does not append responses to an arbitrary existing tab.
+
+## Before sharing the site
+
+- Replace the sample block GPay numbers and UPI IDs in `src/App.tsx` with verified details, or remove them.
+- Verify the WhatsApp number and invitation links.
+- Review the dates, schedule, announcements, venue, images, and all Google Form links.
+- Some displayed numbers and content are sample/demo data. The site does not currently save registrations, announcements, volunteer details, or dashboard statistics itself; only the linked Google Forms store form responses.
+- Do not put passwords, private keys, or other secrets in this static website or its source repository.
+
+## Troubleshooting
+
+- **`npm` or `node` is not recognized:** install Node.js, close and reopen PowerShell, then check `node --version` and `npm --version`.
+- **GitHub Actions fails:** open the failed run under the repository's **Actions** tab and read the step that failed. Confirm the code builds locally with `npm run build`.
+- **The Pages URL shows a 404 or is not published:** confirm **Settings → Pages → Source** is set to **GitHub Actions**, and that the latest deployment workflow completed successfully.
+- **A form does not load in the page:** open its **Open ... Form in Google Forms** link. Check that the form is available to your intended audience and that its URL in `src/App.tsx` is correct.
+
+## Useful commands
+
+```powershell
+npm install       # Install project dependencies
+npm run dev       # Start the local development server
+npm run build     # Type-check and build the production site
+npm run preview   # Preview the production build locally
+npm run lint      # Run Oxlint
+```
+
+Jai Mata Di!
