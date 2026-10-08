@@ -17,7 +17,23 @@ navigation.addEventListener("click", (event) => {
 });
 
 const galleryAlbums = {
-  "2026": [],
+  "2026": [
+    {
+      file: "navarathri-lights.svg",
+      alt: "Illustration of a glowing diya beneath a radiant Navarathri evening sky",
+      caption: "A light for every prayer",
+    },
+    {
+      file: "garba-evening.svg",
+      alt: "Illustration of neighbours dancing together at a colourful Navarathri celebration",
+      caption: "In rhythm, together",
+    },
+    {
+      file: "festival-rangoli.svg",
+      alt: "Illustration of a colourful lotus rangoli and a festive lamp",
+      caption: "Made beautiful together",
+    },
+  ],
   "2025": [],
   "2024": [],
 };
@@ -54,6 +70,9 @@ function showGalleryYear(year) {
 
     const caption = document.createElement("figcaption");
     caption.textContent = photo.caption;
+    const label = document.createElement("span");
+    label.textContent = "2026 festival artwork";
+    caption.append(label);
 
     figure.append(image, caption);
     galleryGrid.append(figure);

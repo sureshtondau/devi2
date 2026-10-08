@@ -22,7 +22,7 @@ The pooja, prasadam sponsor, and general sponsor links open the Google Forms pro
 
 ## Year-wise photo gallery
 
-Photos are stored in `images/<year>/`, for example `images/2026/` or `images/2025/`. Add image files to the matching year folder, then add each image to `galleryAlbums` in `script.js`:
+Images are stored in `images/<year>/`, for example `images/2026/` or `images/2025/`. The 2026 album includes three original, locally stored festival illustrations, labeled as artwork rather than photos from the event. Add community photos to the matching year folder, then add each image to `galleryAlbums` in `script.js`:
 
 ```js
 "2026": [
