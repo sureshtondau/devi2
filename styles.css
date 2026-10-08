@@ -179,6 +179,8 @@ h1, h2, h3, p { margin-top: 0; }
 .gallery-photo:hover img { transform: scale(1.035); }
 .gallery-photo figcaption { padding: 9px 1px 2px; color: #625663; font-family: var(--serif); font-size: 13px; }
 .gallery-photo figcaption span { display: block; margin-top: 4px; color: #95858b; font-family: var(--sans); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+.gallery-photo--missing img { display: none; }
+.gallery-photo__error { min-height: 120px; display: grid; place-items: center; padding: 15px; color: #81504b; background: #f5e9e3; font-size: 11px; text-align: center; }
 .gallery__note { margin: 13px 0 0; color: #91868d; font-size: 9px; line-height: 1.7; }
 
 .join-section { min-height: 340px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 61px 10%; color: #fff9f0; background: linear-gradient(105deg, #743c49, #854951 63%, #6d3a49); }

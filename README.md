@@ -10,11 +10,9 @@ Open `index.html` in a modern browser. For editing, any text editor is enough. G
 
 1. Push these files to the `main` branch of a GitHub repository.
 2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select **main** and the **/(root)** folder, then save.
+3. Under **Build and deployment**, choose **GitHub Actions**.
+4. Push to `main` to run the **Deploy to GitHub Pages** workflow. It prepares and publishes the static site; Node.js and npm are not required for local editing.
 5. After deployment, GitHub Pages will show the public site URL in **Settings → Pages**.
-
-No Actions workflow or build output folder is needed.
 
 ## Registrations
 
@@ -22,19 +20,25 @@ The pooja, prasadam sponsor, and general sponsor links open the Google Forms pro
 
 ## Year-wise photo gallery
 
-Images are stored in `images/<year>/`, for example `images/2026/` or `images/2025/`. The 2026 album includes three original, locally stored festival illustrations, labeled as artwork rather than photos from the event. Add community photos to the matching year folder, then add each image to `galleryAlbums` in `script.js`:
+Photos are stored in `images/<year>/`. To add photos, copy them into the matching folder, then push the added files to `main`. The GitHub Pages workflow automatically finds supported image files and adds them to the gallery; you do not need to edit JavaScript or maintain a photo list. Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.avif`, and `.svg`. Use descriptive filenames such as `opening-ceremony.jpg` for captions.
 
-```js
-"2026": [
-  {
-    file: "opening-ceremony.jpg",
-    alt: "The community gathered for the opening ceremony",
-    caption: "Opening ceremony",
-  },
-],
+To start an album for another year, create a folder such as `images/2027/`, add photos, and push. The year tab is generated automatically. Existing photo folders can be added and published from PowerShell:
+
+```powershell
+git add images/2026
+git commit -m "Add 2026 festival photos"
+git push origin main
 ```
 
-The `file` value must match the image's filename exactly. Add a year folder and a matching year button in `index.html` to start an album for another year. The site displays images already included with the website; it does not upload files or provide permanent visitor uploads.
+After the GitHub Pages workflow finishes, the photos will appear for everyone. The site does not offer visitor uploads or write files back to the repository.
+
+For a local preview after adding photos, regenerate the image list and open `index.html`:
+
+```powershell
+py tools\build_gallery.py
+```
+
+The generated `images/gallery-manifest.js` is maintained automatically; do not edit it by hand.
 
 ## Before sharing
 

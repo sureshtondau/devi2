@@ -8,6 +8,7 @@
     <title>Sri Devi Navarathri 2026 | Aparna Zenon Community</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%AA%B7%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
+    <script src="images/gallery-manifest.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -139,12 +140,8 @@
           <div><h2>Festival memories,<br><em>year by year.</em></h2></div>
           <p>Revisit special moments from our community celebrations. Choose a year to explore its photo album.</p>
         </div>
-        <div class="gallery__years" role="tablist" aria-label="Choose a photo album year">
-          <button class="gallery__year" type="button" id="gallery-tab-2026" role="tab" aria-selected="true" aria-controls="gallery-panel" data-gallery-year="2026">2026</button>
-          <button class="gallery__year" type="button" id="gallery-tab-2025" role="tab" aria-selected="false" aria-controls="gallery-panel" data-gallery-year="2025" tabindex="-1">2025</button>
-          <button class="gallery__year" type="button" id="gallery-tab-2024" role="tab" aria-selected="false" aria-controls="gallery-panel" data-gallery-year="2024" tabindex="-1">2024</button>
-        </div>
-        <div class="gallery__panel" id="gallery-panel" role="tabpanel" aria-labelledby="gallery-tab-2026" tabindex="0">
+        <div class="gallery__years" id="gallery-years" role="tablist" aria-label="Choose a photo album year"></div>
+        <div class="gallery__panel" id="gallery-panel" role="tabpanel" tabindex="0">
           <div class="gallery__empty">
             <span class="gallery__empty-icon" aria-hidden="true">✳</span>
             <h3 id="gallery-empty-title">The 2026 album is waiting for its first memories.</h3>

@@ -16,34 +16,36 @@ navigation.addEventListener("click", (event) => {
   }
 });
 
-const galleryAlbums = {
-  "2026": [
-    {
-      file: "navarathri-lights.svg",
-      alt: "Illustration of a glowing diya beneath a radiant Navarathri evening sky",
-      caption: "A light for every prayer",
-    },
-    {
-      file: "garba-evening.svg",
-      alt: "Illustration of neighbours dancing together at a colourful Navarathri celebration",
-      caption: "In rhythm, together",
-    },
-    {
-      file: "festival-rangoli.svg",
-      alt: "Illustration of a colourful lotus rangoli and a festive lamp",
-      caption: "Made beautiful together",
-    },
-  ],
-  "2025": [],
-  "2024": [],
-};
-
-const galleryTabs = document.querySelectorAll("[data-gallery-year]");
+const galleryAlbums = window.NAVARATRI_GALLERY;
+const galleryYears = document.querySelector("#gallery-years");
 const galleryPanel = document.querySelector("#gallery-panel");
 const galleryGrid = document.querySelector("#gallery-grid");
 const galleryEmpty = document.querySelector(".gallery__empty");
 const galleryEmptyTitle = document.querySelector("#gallery-empty-title");
 const galleryEmptyCopy = document.querySelector("#gallery-empty-copy");
+
+const years = Object.keys(galleryAlbums).sort((a, b) => b.localeCompare(a));
+
+for (const year of years) {
+  const tab = document.createElement("button");
+  tab.className = "gallery__year";
+  tab.type = "button";
+  tab.id = `gallery-tab-${year}`;
+  tab.setAttribute("role", "tab");
+  tab.setAttribute("aria-controls", "gallery-panel");
+  tab.dataset.galleryYear = year;
+  tab.textContent = year;
+  galleryYears.append(tab);
+}
+
+const galleryTabs = galleryYears.querySelectorAll("[data-gallery-year]");
+const initialYear = years.includes("2026") ? "2026" : years[0];
+
+if (initialYear) {
+  const initialTab = document.querySelector(`#gallery-tab-${initialYear}`);
+  initialTab.setAttribute("aria-selected", "true");
+  initialTab.tabIndex = 0;
+}
 
 function showGalleryYear(year) {
   const photos = galleryAlbums[year];
@@ -52,10 +54,8 @@ function showGalleryYear(year) {
   galleryGrid.replaceChildren();
 
   if (photos.length === 0) {
-    galleryEmptyTitle.textContent = `The ${year} album is waiting for its first memories.`;
-    galleryEmptyCopy.textContent = year === "2026"
-      ? "Photos from this year's celebration will appear here after the festival."
-      : `No ${year} photos have been added to the community album yet.`;
+    galleryEmptyTitle.textContent = `The ${year} album is waiting for its first photos.`;
+    galleryEmptyCopy.textContent = `Add photos to the images/${year}/ folder and publish the update to see them here.`;
     return;
   }
 
@@ -67,11 +67,19 @@ function showGalleryYear(year) {
     image.src = `images/${year}/${photo.file}`;
     image.alt = photo.alt;
     image.loading = "lazy";
+    image.addEventListener("error", () => {
+      figure.classList.add("gallery-photo--missing");
+      image.alt = "";
+      const message = document.createElement("span");
+      message.className = "gallery-photo__error";
+      message.textContent = `Image not found: ${photo.file}`;
+      figure.append(message);
+    }, { once: true });
 
     const caption = document.createElement("figcaption");
     caption.textContent = photo.caption;
     const label = document.createElement("span");
-    label.textContent = "2026 festival artwork";
+    label.textContent = photo.label;
     caption.append(label);
 
     figure.append(image, caption);
@@ -100,6 +108,8 @@ for (const tab of galleryTabs) {
     nextTab.click();
   });
 }
+
+if (initialYear) showGalleryYear(initialYear);
 
 const countdownTarget = new Date("2026-10-11T00:00:00+05:30").getTime();
 const countdownMessage = document.querySelector("#countdown-message");
